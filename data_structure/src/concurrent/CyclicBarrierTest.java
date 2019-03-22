@@ -13,9 +13,9 @@ import java.util.concurrent.Executors;
  */
 public class CyclicBarrierTest {
     public static void main(String[] args) {
-        int N = 4;
+        int N = 3;
         final ExecutorService exec = Executors.newFixedThreadPool(N);
-        CyclicBarrier barrier  = new CyclicBarrier(N);
+        CyclicBarrier barrier  = new CyclicBarrier(N,() -> System.out.println("哎呦，不错喔！"));
         exec.submit(() -> {
             readFiles(barrier);
         });
