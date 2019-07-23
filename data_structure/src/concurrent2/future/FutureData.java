@@ -16,7 +16,7 @@ public class FutureData implements Data {
     private RealData realData;
 
     public FutureData(Callable<RealData> callable) {
-        super(callable);
+        //super(callable);
     }
 
 /*    public synchronized void setRealData(RealData realData) {

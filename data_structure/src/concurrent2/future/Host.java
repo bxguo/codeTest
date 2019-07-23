@@ -12,7 +12,7 @@ import java.util.concurrent.FutureTask;
 public class Host {
     public Data get(String str) {
         FutureData futureData = new FutureData(() -> new RealData(str));
-        new Thread(futureData).start();
+        //new Thread(futureData).start();
         return futureData;
     }
     public Data get2(String str) {
