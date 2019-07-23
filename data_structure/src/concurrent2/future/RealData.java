@@ -16,13 +16,13 @@ public class RealData implements Data {
             arr[i] = str;
         }
         try {
-            System.out.println("工作等待中。。。。。");
+            System.out.println(str+"工作等待中。。。。。");
             Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         this.Content = Arrays.toString(arr);
-        System.out.println("工作完成");
+        System.out.println(str+"工作完成");
     }
 
 
