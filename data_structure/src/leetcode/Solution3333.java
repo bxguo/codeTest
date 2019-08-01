@@ -1,8 +1,9 @@
 package leetcode;
 
-import com.google.common.cache.CacheBuilder;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Given a string, find the length of the longest substring without repeating characters.
