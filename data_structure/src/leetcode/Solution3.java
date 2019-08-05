@@ -15,7 +15,6 @@ public class Solution3 {
     public int digitCounts(int k, int n) {
         // write your code here
         int count = 0;
-        int lenth = (n + "").length();
         for (int i = 0; i <= n; i++) {
             String s = i + "";
             for (int j = 0; j < s.length(); j++) {
