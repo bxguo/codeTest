@@ -6,9 +6,8 @@ package leetcode;
  */
 public class AnswerTest {
     public static void main(String[] args) {
-        Solution14 solution = new Solution14();
-        int[] nums={1,4,4,5,7,7,8,9,9,10};
-        int target = 1;
-        System.out.println(solution.binarySearch2(nums, target));
+        Solution15 solution = new Solution15();
+        int[] nums={1,2,3};
+        System.out.println(solution.permute(nums));
     }
 }
