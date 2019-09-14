@@ -1,4 +1,4 @@
-package leetcode.search;
+package lintcode.search;
 
 /**
  * @author: bxguo

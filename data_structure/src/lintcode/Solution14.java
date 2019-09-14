@@ -1,4 +1,4 @@
-package leetcode;
+package lintcode;
 
 /**
  * 给定一个排序的整数数组（升序）和一个要查找的整数target，

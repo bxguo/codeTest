@@ -1,4 +1,4 @@
-package leetcode;
+package lintcode;
 
 import java.util.HashSet;
 import java.util.PriorityQueue;

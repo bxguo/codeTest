@@ -1,4 +1,4 @@
-package leetcode;
+package lintcode;
 
 /**
  * 设计一个算法，计算出n阶乘中尾部零的个数

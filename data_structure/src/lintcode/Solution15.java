@@ -1,11 +1,7 @@
-package leetcode;
-
-import com.google.common.collect.Lists;
+package lintcode;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 /**
  * 给定一个数字列表，返回其所有可能的排列。

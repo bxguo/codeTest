@@ -1,4 +1,4 @@
-package leetcode;
+package lintcode;
 
 /**
  * 计算数字 k 在 0 到 n 中的出现的次数，k 可能是 0~9 的一个值。
