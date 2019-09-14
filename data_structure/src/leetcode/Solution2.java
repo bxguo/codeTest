@@ -15,6 +15,40 @@ package leetcode;
  * Created by bxguo on 2019/9/14 19:16
  */
 public class Solution2 {
+
+    /*
+     * 没有保留原始参数数据，不太好
+     */
+    public ListNode addTwoNumbers2(ListNode l1, ListNode l2) {
+        ListNode result = new ListNode(0);
+        ListNode node = result;
+        int sum = 0;
+
+        while (l1 != null || l2 != null){
+            int a = 0;
+            if (l1 != null) {
+                a = l1.val;
+                l1 = l1.next;
+            }
+            int b = 0;
+            if (l2 != null) {
+                b = l2.val;
+                l2 = l2.next;
+            }
+            sum = sum + a + b;
+            node.next = new ListNode(sum % 10);
+            sum /= 10;
+            node = node.next;
+        }
+        if (sum > 0) {
+            node.next = new ListNode(sum);
+        }
+        return result.next;
+    }
+
+    /*
+     * result必须始终指向头节点，node为过程变量
+     */
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         ListNode result = new ListNode(0);
         ListNode node = result;
@@ -38,10 +72,6 @@ public class Solution2 {
         }
         return result.next;
     }
-
-
-
-
     public class ListNode {
         int val;
         ListNode next;
