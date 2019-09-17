@@ -50,7 +50,9 @@ public class Solution10 {
     public boolean isMatch(String s, String p) {
         int ls = s.length(), lp = p.length();
         boolean[][] dp = new boolean[ls + 1][lp + 1];
+        //默认sp为""时为true
         dp[0][0] = true;
+        //预先处理可以匹配空串s的情况，即p="a*n*c*d*k*"这种
         for (int j = 2; j <= lp; j++) {
             dp[0][j] = dp[0][j - 2] && p.charAt(j - 1) == '*';
         }
@@ -58,13 +60,43 @@ public class Solution10 {
             for (int j = 1; j <= lp; j++) {
                 int m = i - 1, n = j - 1;
                 if (p.charAt(n) == '*') {
-                    dp[i][j] = dp[i][j - 2] || dp[i - 1][j] &&
-                            (s.charAt(m) == p.charAt(n - 1) || p.charAt(n - 1) == '.');
+
+                    /*if (p.charAt(n-1) == s.charAt(m) || p.charAt(n-1)=='.'){
+                        //多个字符匹配的情况  没有匹配的情况  单个字符匹配的情况
+                        dp[i][j] = dp[i - 1][j] || dp[i][j - 2] || dp[i][j - 1];
+                    }else {
+                        dp[i][j] = dp[i][j - 2];
+                    }*/
+                    //等价于上面的写法
+                    dp[i][j] = dp[i][j - 2] || dp[i - 1][j] && (s.charAt(m) == p.charAt(n - 1) || p.charAt(n - 1) == '.');
                 } else if (s.charAt(m) == p.charAt(n) || p.charAt(n) == '.') {
                     dp[i][j] = dp[i - 1][j - 1];
                 }
             }
         }
         return dp[ls][lp];
+    }
+    public boolean isMatch2(String s, String p) {
+        if (s == null) {
+            if (p == null) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (s.equals(p)) {
+            return true;
+        }
+        return s.matches(p);
+    }
+
+    public static void main(String[] args) {
+        Solution10 solution10 = new Solution10();
+
+        String s = "";
+        String p = "a********";
+        //System.out.println(solution10.isMatch(s, p));
+
+        System.out.println(false || true && true);
     }
 }
