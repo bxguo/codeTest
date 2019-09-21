@@ -70,20 +70,17 @@ public class Solution8 {
         for (int i = start; i < str.length(); i++) {
             char ch = str.charAt(i);
             if (!Character.isDigit(ch)) {
-                break;
-            }else {
-                res = res * 10 + ch - '0';
+                return (int) res * flag;
+            }
+            res = res * 10 + ch - '0';
+            if (flag == 1 && (res > Integer.MAX_VALUE)) {
+                return Integer.MAX_VALUE;
+            }
+            if (flag == -1 && res<Integer.MIN_VALUE) {
+                return Integer.MIN_VALUE;
             }
         }
-        res = res * flag;
-
-        if (flag == 1 && (res > Integer.MAX_VALUE || res<Integer.MIN_VALUE)) {
-            return Integer.MAX_VALUE;
-        }
-        if (flag == -1 && res<Integer.MIN_VALUE) {
-            return Integer.MIN_VALUE;
-        }
-        return (int)res;
+        return (int) res * flag;
     }
 
     public static void main(String[] args) {
