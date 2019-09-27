@@ -2,7 +2,9 @@ package leetcode;
 
 import leetcode.node.ListNode;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * 合并 k 个排序链表，返回合并后的排序链表。请分析和描述算法的复杂度。
@@ -26,11 +28,14 @@ import java.util.List;
  */
 public class Solution23 {
 
+
+    /**
+     * 效率低
+     */
     public ListNode mergeKLists2(ListNode[] lists) {
         if (lists == null || lists.length == 0) {
             return null;
         }
-
         ListNode aus = new ListNode(0);
         ListNode head = aus;
         boolean flag = true;
@@ -61,19 +66,20 @@ public class Solution23 {
         return aus.next;
     }
 
-
+    /**
+     * 递归解法。也不咋地比上边的好一些
+     */
+    private ListNode aus = null;
     public ListNode mergeKLists(ListNode[] lists) {
-        ListNode aus = new ListNode(0);
         if (lists.length == 0) {
             return aus;
         }
-        fun(aus, lists, 0);
-        return aus.next;
+        fun(lists, 0);
+        return aus;
     }
 
-    private void fun(ListNode aus, ListNode[] lists, int cur) {
+    private void fun(ListNode[] lists, int cur) {
         if (lists.length == cur) {
-            aus = aus;
             return;
         }
         ListNode test = new ListNode(0);
@@ -97,11 +103,45 @@ public class Solution23 {
             head = head.next;
         }
         aus = test.next;
-        fun(aus, lists, cur + 1);
+        fun(lists, cur + 1);
     }
 
+    /**
+     * 优先队列高级轮子，笑哭
+     */
+    public ListNode mergeKLists3(ListNode[] lists) {
+        PriorityQueue<ListNode> queue = new PriorityQueue<>(Comparator.comparingInt(node -> node.val));
+        ListNode dummy = new ListNode(0);
+        ListNode p = dummy;
+        queue.addAll(Stream.of(lists).filter(Objects::nonNull).collect(Collectors.toList()));
+        while (!queue.isEmpty()) {
+            ListNode node = queue.poll();
+            p.next = node;
+            p = p.next;
+            if (node.next != null) {
+                queue.add(node.next);
+            }
+        }
+        return dummy.next;
+    }
+
+
+
     public static void main(String[] args) {
-        ListNode t1 = new ListNode(1);
+
+        Solution23 solution23 = new Solution23();
+        ListNode t1 = new ListNode(2);
+        ListNode t2 = new ListNode(-1);
+        ListNode[] lists = {t1,null,t2};
+        ListNode mergeKLists = solution23.mergeKLists3(lists);
+        System.out.println(mergeKLists);
+
+
+
+
+
+
+        /*ListNode t1 = new ListNode(1);
         ListNode t11 = new ListNode(4);
         t1.next = t11;
         t11.next = new ListNode(5);
@@ -119,10 +159,11 @@ public class Solution23 {
 
         lists[0] = t1;
         lists[1] = t2;
-        lists[2] = t3;
+        lists[2] = t3;*/
 
-        Solution23 solution23 = new Solution23();
-        ListNode listNode = solution23.mergeKLists2(lists);
+
+
+
 
     }
 }

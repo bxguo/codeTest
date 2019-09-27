@@ -39,9 +39,6 @@ public class Solution94 {
             fun(root.right, aux);
         }
     }
-
-
-
     public class TreeNode {
         int val;
         TreeNode left;

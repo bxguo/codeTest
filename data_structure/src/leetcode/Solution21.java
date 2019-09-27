@@ -1,5 +1,7 @@
 package leetcode;
 
+import leetcode.node.ListNode;
+
 /**
  * 将两个有序链表合并为一个新的有序链表并返回。新链表是通过拼接给定的两个链表的所有节点组成的。 
  * <p>
@@ -12,14 +14,7 @@ package leetcode;
  * @time: 2019/9/25 15:46
  */
 public class Solution21 {
-    static class ListNode {
-        int val;
-        ListNode next;
 
-        ListNode(int x) {
-            val = x;
-        }
-    }
 
     /**
      * 递归解法
