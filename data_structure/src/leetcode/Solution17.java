@@ -73,17 +73,17 @@ public class Solution17 {
         if (digits == null || digits.length() == 0) {
             return list;
         }
-        getLetter("", digits);
+        getLetter("", digits, 0);
         return list;
     }
-    public void getLetter(String item,  String remainDigits){
-        if (remainDigits.length() == 0) {
+    public void getLetter(String item,  String digits, int loc){
+        if (digits.length() == loc) {
             list.add(item);
         }else {
-            String letters = strs[remainDigits.charAt(0) - '2'];
+            String letters = strs[digits.charAt(loc) - '2'];
+            loc++;
             for (int j = 0; j < letters.length(); j++) {
-                getLetter(item + letters.charAt(j), remainDigits.substring(1));
-
+                getLetter(item + letters.charAt(j), digits, loc);
             }
         }
     }
