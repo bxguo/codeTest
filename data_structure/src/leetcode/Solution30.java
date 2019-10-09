@@ -3,6 +3,7 @@ package leetcode;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.function.BiFunction;
 
 /**
  * 给定一个字符串 s 和一些长度相同的单词 words。找出 s 中恰好可以由 words 中所有单词串联形成的子串的起始位置。
@@ -38,34 +39,21 @@ public class Solution30 {
             return res;
         }
         int wordLen = words[0].length();
-        //HashMap1 存所有单词
         HashMap<String, Integer> allWords = new HashMap<String, Integer>();
-        for (String w : words) {
-            int value = allWords.getOrDefault(w, 0);
-            allWords.put(w, value + 1);
+        for (String word : words) {
+            allWords.merge(word,1, Integer::sum);
         }
-        //遍历所有子串
         for (int i = 0; i < s.length() - wordNum * wordLen + 1; i++) {
-            //HashMap2 存当前扫描的字符串含有的单词
             HashMap<String, Integer> hasWords = new HashMap<String, Integer>();
             int num = 0;
-            //判断该子串是否符合
             while (num < wordNum) {
                 String word = s.substring(i + num * wordLen, i + (num + 1) * wordLen);
-                //判断该单词在 HashMap1 中
-                if (allWords.containsKey(word)) {
-                    int value = hasWords.getOrDefault(word, 0);
-                    hasWords.put(word, value + 1);
-                    //判断当前单词的 value 和 HashMap1 中该单词的 value
-                    if (hasWords.get(word) > allWords.get(word)) {
-                        break;
-                    }
-                } else {
+                if (!allWords.containsKey(word) || hasWords.getOrDefault(word, 0) + 1 > allWords.get(word)) {
                     break;
                 }
+                hasWords.merge(word,1, Integer::sum);
                 num++;
             }
-            //判断是不是所有的单词都符合条件
             if (num == wordNum) {
                 res.add(i);
             }
@@ -74,10 +62,20 @@ public class Solution30 {
     }
 
     public static void main(String[] args) {
-        String str = "barfoothefoobarman";
-        int length = str.length();
-        System.out.println(length-2*3+1);
-        System.out.println(str.charAt(13));
+        Solution30 solution30 = new Solution30();
+        String[] words = {"foo", "bar"};
+        String s = "barfoothefoobarman";
+        solution30.findSubstring(s, words);
+        /*HashMap<String, Integer> allWords = new HashMap<String, Integer>();
+        for (String word : words) {
+            int value = allWords.getOrDefault(word, 0);
+            allWords.put(word, value + 1);
+        }
+        allWords.
+        allWords.merge("1",2,(integer, integer2) -> {
 
+        });
+
+        System.out.println("");*/
     }
 }
