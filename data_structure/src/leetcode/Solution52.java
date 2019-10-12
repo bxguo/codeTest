@@ -26,6 +26,7 @@ public class Solution52 {
     }
 
     //简化的动态规划，因为此题只需要知道最大值即可并不需要知道每一步决策的最大值
+    //time: O(n)  space: O(1)
     public int maxSubArray2(int[] nums) {
         int ans = nums[0];
         int sum = nums[0];
