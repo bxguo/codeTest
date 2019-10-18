@@ -7,7 +7,7 @@ import org.junit.Test;
  * @author: bxguo
  * @time: 2019/10/17 15:01
  */
-public class Insertion {
+public class InsertionSort {
     @Test
     public void sort() {
         int[] nums = {1,3,2,4,6,7,9,8,5,0};
@@ -17,7 +17,5 @@ public class Insertion {
                 SortUtils.swap(nums, j, j - 1);
             }
         }
-
-
     }
 }
