@@ -14,10 +14,11 @@ public class QuickSort {
     @Test
     public void sort() {
         int[] nums = {1, 3, 2, 4, 6, 7, 9, 8, 5, 0};
-        sort(nums, 0, nums.length - 1);
+        sort2(nums, 0, nums.length - 1);
         System.out.println(nums);
     }
 
+    //快速排序
     private void sort(int[] nums, int l, int h) {
         if (h <= l) {
             return;
@@ -40,5 +41,25 @@ public class QuickSort {
         SortUtils.swap(nums, l, i - 1);
         sort(nums, l, j - 1);
         sort(nums, j + 1, h);
+    }
+
+    //三向切分快速排序
+    protected void sort2(int[] nums, int l, int h) {
+        if (h <= l) {
+            return;
+        }
+        int v = nums[l];//基准值
+        int lt = l, i = l + 1, gt = h;
+        while (i <= gt) {
+            if (nums[i] < v) {
+                SortUtils.swap(nums, lt++, i++);
+            } else if (nums[i] > v) {
+                SortUtils.swap(nums, i, gt--);
+            } else {
+                i++;
+            }
+        }
+        sort2(nums, l, lt - 1);
+        sort2(nums, gt + 1, h);
     }
 }
