@@ -6,7 +6,7 @@ import org.junit.Test;
  * @author: bxguo
  * @time: 2019/10/18 17:42
  */
-public class HeadSort {
+public class HeapSort {
     //public void sort(int[] arr) {
     @Test
     public void sort() {
