@@ -18,8 +18,7 @@ public class ShellSort {
         while (h >= 1) {
             /*TODO 网上找的
             for (int i = h; i < N; i++) {
-                int j = i;
-                for (; j >= h && less(nums[j], nums[j - h]); j -= h) {
+                for (int j = i; j >= h && less(nums[j], nums[j - h]); j -= h) {
                     swap(nums, j, j - h);
                 }
             }*/
