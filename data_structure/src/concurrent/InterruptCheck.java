@@ -10,8 +10,8 @@ public class InterruptCheck {
         System.out.println("Point A: t.isInterrupted()=" + t.isInterrupted());
         //待决中断，中断自身
         t.interrupt();
-        System.out.println("Point B: t.isInterrupted()=" + t.isInterrupted());
-        System.out.println("Point C: t.isInterrupted()=" + t.isInterrupted());
+        System.out.println("Point B: t.isInterrupted()=" + Thread.interrupted());
+        System.out.println("Point C: t.isInterrupted()=" + Thread.interrupted());
 
         try{
             Thread.sleep(2000);
