@@ -19,6 +19,7 @@ public class BubbleSort {
                 }
             }
             if (isSort) {
+                //进入这里说明集合已经排好序
                 break;
             }
         }

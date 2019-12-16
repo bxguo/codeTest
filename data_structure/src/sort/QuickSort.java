@@ -23,21 +23,29 @@ public class QuickSort {
         if (h <= l) {
             return;
         }
+        //nums[l]作为切割点，比它大的放右边比它小的放左边
         int v = nums[l];
         int i = l + 1, j = h;
         while (true) {
+            //从左边开始直到找到一个大于等于nums[i]的值为止
             while (i != h && nums[i] < v) {
                 i++;
             }
+            //从左边开始直到找到一个小于等于nums[i]的值为止
             while (j != l && nums[j] > v) {
                 j--;
             }
+            //如果符合i < j，也就是上面两个循环没有重叠则交换上面发现的两个值，
+            //使得小于等于nums[i]在左边，大于等于nums[i]在右边
+            //循环完整个集合为止
             if (i < j) {
                 SortUtils.swap(nums, i, j);
             }else {
                 break;
             }
         }
+        //将nums[i]放到对应的位置，以它为中心，切割出两个大于和小于它的数组
+        //递归排序，直到h <= l（即集合里只有一个值）
         SortUtils.swap(nums, l, i - 1);
         sort(nums, l, j - 1);
         sort(nums, j + 1, h);
