@@ -64,7 +64,6 @@ public class Solution4 {
             return nums1[(length - 1) / 2];
         }
     }
-
     public static void main(String[] args) {
         Solution4 solution4 = new Solution4();
         int[] nums1 = {1,3};

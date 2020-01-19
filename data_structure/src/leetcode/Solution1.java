@@ -1,6 +1,8 @@
 package leetcode;
 
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Given an array of integers, return indices of the two numbers such that they add up to a specific target.
@@ -13,6 +15,22 @@ import java.util.HashMap;
  */
 public class Solution1 {
 
+    //耗时 29 ms
+    public int[] twoSum3(int[] nums, int target) {
+        if (nums == null || nums.length < 1) {
+            return new int[]{};
+        }
+        List<Integer> list = new LinkedList<>();
+        for (int i = 0; i < nums.length; i++) {
+            if (list.contains(target - nums[i])) {
+                return new int[]{list.indexOf(target - nums[i]), i};
+            }
+            list.add(nums[i]);
+        }
+        return new int[]{};
+    }
+
+    //TODO 最优 耗时 8 ms (因为要获取下标所以下标只能存map.val)
     public int[] twoSum2(int[] nums, int target) {
         if (nums == null || nums.length < 1) {
             return new int[]{};
@@ -26,8 +44,9 @@ public class Solution1 {
         }
         return new int[]{};
     }
+
     /*
-       O(n^2)
+       O(n^2)  55 ms
      */
     public int[] twoSum(int[] nums, int target) {
         if (nums == null || nums.length < 1) {

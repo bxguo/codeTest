@@ -60,15 +60,16 @@ public class Solution10 {
             for (int j = 1; j <= lp; j++) {
                 int m = i - 1, n = j - 1;
                 if (p.charAt(n) == '*') {
-
                     /*if (p.charAt(n-1) == s.charAt(m) || p.charAt(n-1)=='.'){
                         //多个字符匹配的情况  没有匹配的情况  单个字符匹配的情况
                         dp[i][j] = dp[i - 1][j] || dp[i][j - 2] || dp[i][j - 1];
-                    }else {
+                     }else {
                         dp[i][j] = dp[i][j - 2];
                     }*/
                     //等价于上面的写法
-                    dp[i][j] = dp[i][j - 2] || dp[i - 1][j] && (s.charAt(m) == p.charAt(n - 1) || p.charAt(n - 1) == '.');
+                    dp[i][j] = dp[i][j - 2]
+                            || dp[i - 1][j] && (s.charAt(m) == p.charAt(n - 1)
+                            || p.charAt(n - 1) == '.');
                 } else if (s.charAt(m) == p.charAt(n) || p.charAt(n) == '.') {
                     dp[i][j] = dp[i - 1][j - 1];
                 }

@@ -49,8 +49,8 @@ public class Solution5 {
         }
         String res = "";
         for (int i = 0; i < s.length(); i++) {
-            res = fun(s, res, i, i);
-            res = fun(s, res, i, i + 1);
+            res = fun(s, res, i, i);       //奇数回文数
+            res = fun(s, res, i, i + 1);//偶数回文数
         }
         return res;
     }

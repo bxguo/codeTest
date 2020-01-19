@@ -29,7 +29,6 @@ public class Solution7 {
                 return 0;
             }
         }
-
         return (int)res;
     }
 
