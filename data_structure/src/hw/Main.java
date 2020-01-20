@@ -1,5 +1,7 @@
 package hw;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -21,6 +23,20 @@ public class Main {
                 sb.append(trim).append(" ");
             }
         }
-        return sb.toString();
+        return sb.toString().trim();
+    }
+    public static String ReverseWords2(String s) {
+        if (s == null || "".equals(s)) {
+            return s;
+        }
+        String[] words = s.trim().split(" ");
+        List<String> list = new ArrayList<>();
+        for (int i = words.length - 1; i >= 0; i--) {
+            String trim = words[i].trim();
+            if (!"".equals(trim)) {
+                list.add(trim);
+            }
+        }
+        return String.join(" ", list);
     }
 }

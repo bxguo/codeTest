@@ -27,10 +27,10 @@ public class Solution94 {
 
     //利用栈遍历
     public List<Integer> inorderTraversal2(TreeNode root) {
-        if (root == null) {
-            return null;
-        }
         List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
         Stack<TreeNode> stack = new Stack<>();
         TreeNode cur = root;
         while (cur != null || !stack.isEmpty()) {
@@ -41,6 +41,29 @@ public class Solution94 {
             cur = stack.pop();
             res.add(cur.val);
             cur = cur.right;
+        }
+        return res;
+    }
+    //利用栈遍历  空间复杂度少了一个 TreeNode cur 稍好于inorderTraversal2
+    public List<Integer> inorderTraversal3(TreeNode root) {
+        List<Integer> res = new ArrayList<>();
+        if (root == null) {
+            return res;
+        }
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(root);
+        while (!stack.isEmpty()) {
+            while (stack.peek().left != null) {
+                stack.push(stack.peek().left);
+            }
+            TreeNode node = stack.pop();
+            res.add(node.val);
+            if (!stack.isEmpty()) {
+                stack.peek().left = null;
+            }
+            if (node.right != null) {
+                stack.push(node.right);
+            }
         }
         return res;
     }
