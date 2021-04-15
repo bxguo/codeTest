@@ -26,7 +26,7 @@ import java.util.*;
  */
 public class Solution145 {
 
-    //DFS后序遍历
+    //DFS 后序遍历
     public List<Integer> postorderTraversal2(TreeNode root) {
         LinkedList<Integer> output = new LinkedList<>();
         if (root == null) {
@@ -36,7 +36,7 @@ public class Solution145 {
         stack.add(root);
         while (!stack.isEmpty()) {
             TreeNode node = stack.pollLast();
-            output.addFirst(node.val);
+            output.addFirst(node.val); //这行很关键
             if (node.left != null) {
                 stack.add(node.left);
             }
