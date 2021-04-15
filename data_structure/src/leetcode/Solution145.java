@@ -46,15 +46,7 @@ public class Solution145 {
         }
         return output;
     }
-    //递归做法
-    public List<Integer> postorderTraversal(TreeNode root) {
-        List<Integer> res = new ArrayList<>();
-        if (root == null) {
-            return res;
-        }
-        fun(root, res);
-        return res;
-    }
+
     void fun(TreeNode node, List<Integer> res){
         if (node == null) {
             return;
