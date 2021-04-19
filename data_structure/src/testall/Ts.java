@@ -30,7 +30,9 @@ public class Ts {
                 service.execute(new Runnable() {
                     @Override
                     public void run() {
-                        queue.offer("el");
+                        while (queue.isEmpty()) {
+                            queue.offer("el");
+                        }
                     }
                 });
             }
