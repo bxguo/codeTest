@@ -64,4 +64,9 @@ public class CronTest {
 
     }
 
+    @Test
+    public void testsub(){
+        System.out.println(StrUtil.subAfter("bridge_State_a", "_", false));
+    }
+
 }
