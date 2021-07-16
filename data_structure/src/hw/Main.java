@@ -1,6 +1,7 @@
 package hw;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -25,6 +26,7 @@ public class Main {
         }
         return sb.toString().trim();
     }
+    //ArrayList转string
     public static String ReverseWords2(String s) {
         if (s == null || "".equals(s)) {
             return s;
