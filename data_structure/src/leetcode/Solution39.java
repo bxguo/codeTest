@@ -30,7 +30,7 @@ import java.util.List;
 public class Solution39 {
 
     //TODO ？？？
-    public List<List<Integer>> combinationSum(int[] candidates, int tar get) {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
 
         return null;
     }
