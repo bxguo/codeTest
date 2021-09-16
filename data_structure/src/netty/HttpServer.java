@@ -25,12 +25,18 @@ public class HttpServer {
         bootstrap.group(boss, work);
 
         //handler, 编码和解码 以及各种业务处理
-        bootstrap.childHandler(new ChannelInitializer() {
+        bootstrap.childHandler(new ChannelInitializer<Channel>() {
             @Override
             protected void initChannel(Channel channel) throws Exception {
                 channel.pipeline().addLast("http-decode", new HttpRequestDecoder());
                 channel.pipeline().addLast("http-encode", new HttpResponseEncoder());
                 channel.pipeline().addLast("http-server-handler", new HttpServerHandler());
+            }
+        });
+        bootstrap.childHandler(new SimpleChannelInboundHandler<Channel>() {
+            @Override
+            protected void messageReceived(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
+
             }
         });
 
