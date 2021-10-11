@@ -4,9 +4,8 @@ import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.codec.http.*;
-
-import java.nio.charset.StandardCharsets;
+import io.netty.handler.codec.http.HttpRequestDecoder;
+import io.netty.handler.codec.http.HttpResponseEncoder;
 
 /**
  * @author: bxguo
@@ -35,7 +34,7 @@ public class HttpServer {
         });
         bootstrap.childHandler(new SimpleChannelInboundHandler<Channel>() {
             @Override
-            protected void messageReceived(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
+            protected void channelRead0(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
 
             }
         });
@@ -54,17 +53,8 @@ public class HttpServer {
     public class HttpServerHandler extends SimpleChannelInboundHandler{
 
         @Override
-        protected void messageReceived(ChannelHandlerContext ctx, Object msg) throws Exception {
-            //请求行
-            DefaultFullHttpResponse response = new DefaultFullHttpResponse(HttpVersion.HTTP_1_1, HttpResponseStatus.OK);
+        protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
 
-            //请求头
-            response.headers().add(HttpHeaderNames.CONTENT_TYPE, "application/json; charset=utf-8");
-
-            //请求体
-            response.content().writeBytes("hello 啊".getBytes(StandardCharsets.UTF_8));
-            ChannelFuture channelFuture = ctx.writeAndFlush(response);
-            channelFuture.addListener(ChannelFutureListener.CLOSE);
         }
     }
 
