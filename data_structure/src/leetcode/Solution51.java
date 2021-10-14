@@ -15,4 +15,5 @@ package leetcode;
  * @date 2021/10/11
  */
 public class Solution51 {
+
 }
