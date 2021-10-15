@@ -40,16 +40,13 @@ public class Solution51 {
             res.add(temp);
             return;
         }
-        while (n < trace.length) {
-            for (int j = 0; j < trace[n].length; j++) {
-                if (check(trace, n, j)) {
-                    Arrays.fill(trace[n], '.');
-                    trace[n][j] = 'Q';
-                    backtrack(res, trace, n + 1);
-                    trace[n][j] = '.';
-                }
+        for (int j = 0; j < trace[n].length; j++) {
+            if (check(trace, n, j)) {
+                Arrays.fill(trace[n], '.');
+                trace[n][j] = 'Q';
+                backtrack(res, trace, n + 1);
+                trace[n][j] = '.';
             }
-            return;
         }
     }
 
