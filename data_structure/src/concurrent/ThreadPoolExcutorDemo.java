@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class ThreadPoolExcutorDemo {
     private static int produceTaskSleepTime = 5;
-    private static int consumeTaskSleepTime = 5000;
+    private static int consumeTaskSleepTime = 500;
     private static int produceTaskMaxNumber = 20; //定义最大添加10个线程到线程池中
 
     public static void main(String[] args) {
@@ -41,7 +41,7 @@ public class ThreadPoolExcutorDemo {
         }
         public void run(){
             //处理一个任务，这里的处理方式太简单了，仅仅是一个打印语句
-            System. out.println( "start------"+threadPoolTaskData );
+            System.out.println("start------ " + threadPoolTaskData + Thread.currentThread().getName());
             try {
                 //便于观察，等待一段时间
                 Thread. sleep(consumeTaskSleepTime);
