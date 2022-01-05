@@ -38,27 +38,53 @@ public class Solution21 {
     /**
      * 基础归并排序
      */
-public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
-    ListNode res = new ListNode(0);
-    ListNode head = res;
-    while (l1 != null || l2 != null) {
-        if (l1 == null) {
-            head.next = l2;
-            l2 = l2.next;
-        } else if (l2 == null) {
-            head.next = l1;
-            l1 = l1.next;
-        } else if (l1.val < l2.val) {
-            head.next = l1;
-            l1 = l1.next;
-        } else {
-            head.next = l2;
-            l2 = l2.next;
+    public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(0);
+        ListNode head = res;
+        while (l1 != null || l2 != null) {
+            if (l1 == null) {
+                head.next = l2;
+                l2 = l2.next;
+            } else if (l2 == null) {
+                head.next = l1;
+                l1 = l1.next;
+            } else if (l1.val < l2.val) {
+                head.next = l1;
+                l1 = l1.next;
+            } else {
+                head.next = l2;
+                l2 = l2.next;
+            }
+            head = head.next;
         }
-        head = head.next;
+        return res.next;
     }
-    return res.next;
-}
+
+    /**
+     * 归并排序优化
+     */
+    public ListNode mergeTwoLists3(ListNode l1, ListNode l2) {
+        ListNode res = new ListNode(-1);
+        ListNode p = res;
+        while (l1 != null && l2 != null) {
+            if (l1.val < l2.val) {
+                p.next = l1;
+                l1 = l1.next;
+            } else {
+                p.next = l2;
+                l2 = l2.next;
+            }
+            p = p.next;
+        }
+        if (l1 != null) {
+            p.next = l1;
+        }
+        if (l2 != null) {
+            p.next = l2;
+        }
+
+        return res.next;
+    }
 
     public static void main(String[] args) {
         ListNode a = new ListNode(4);
