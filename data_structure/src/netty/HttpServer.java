@@ -34,6 +34,10 @@ public class HttpServer {
         });
         bootstrap.childHandler(new SimpleChannelInboundHandler<Channel>() {
             @Override
+            protected void messageReceived(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
+
+            }
+
             protected void channelRead0(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
 
             }
@@ -51,9 +55,11 @@ public class HttpServer {
         }
     }
     public class HttpServerHandler extends SimpleChannelInboundHandler{
-
-        @Override
         protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
+
+        }
+        @Override
+        protected void messageReceived(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
 
         }
     }

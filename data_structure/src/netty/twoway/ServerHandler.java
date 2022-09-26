@@ -14,6 +14,11 @@ public class ServerHandler extends CustomHeartbeatHandler{
     }
 
     @Override
+    protected void messageReceived(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
+
+    }
+
+    @Override
     protected void handleData(ChannelHandlerContext channelHandlerContext, ByteBuf buf) {
         byte[] data = new byte[buf.readableBytes() - 5];
         ByteBuf responseBuf = Unpooled.copiedBuffer(buf);
