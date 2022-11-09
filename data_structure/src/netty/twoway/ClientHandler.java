@@ -13,6 +13,11 @@ public class ClientHandler extends CustomHeartbeatHandler {
     }
 
     @Override
+    protected void messageReceived(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
+
+    }
+
+    @Override
     protected void handleData(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) {
         byte[] data = new byte[byteBuf.readableBytes() - 5];
         byteBuf.skipBytes(5);
