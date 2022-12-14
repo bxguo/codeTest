@@ -33,7 +33,6 @@ public class HttpServer {
             }
         });
         bootstrap.childHandler(new SimpleChannelInboundHandler<Channel>() {
-            @Override
             protected void messageReceived(ChannelHandlerContext channelHandlerContext, Channel channel) throws Exception {
 
             }
@@ -58,7 +57,6 @@ public class HttpServer {
         protected void channelRead0(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
 
         }
-        @Override
         protected void messageReceived(ChannelHandlerContext channelHandlerContext, Object o) throws Exception {
 
         }

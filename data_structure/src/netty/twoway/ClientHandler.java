@@ -12,7 +12,6 @@ public class ClientHandler extends CustomHeartbeatHandler {
         super("client");
     }
 
-    @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
 
     }

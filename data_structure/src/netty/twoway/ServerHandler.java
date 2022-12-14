@@ -13,7 +13,6 @@ public class ServerHandler extends CustomHeartbeatHandler{
         super("server");
     }
 
-    @Override
     protected void messageReceived(ChannelHandlerContext channelHandlerContext, ByteBuf byteBuf) throws Exception {
 
     }
