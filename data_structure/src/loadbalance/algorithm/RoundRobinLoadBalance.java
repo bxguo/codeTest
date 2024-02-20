@@ -20,9 +20,9 @@ public class RoundRobinLoadBalance extends BaseLoadBalance<Node> implements Load
         // if (list.size() <= position.get()) {
         //   position.set(0);
         //}
-        position.compareAndSet(list.size(), 0);
+        position.compareAndSet(list.size(), 0); //位置到最后一个的时候，重置到第一个
         Node node = list.get(position.get());
-        position.getAndIncrement();
+        position.getAndIncrement(); //位置顺位下一个
         return node;
     }
 

@@ -1,6 +1,5 @@
 package loadbalance.algorithm;
 
-import cn.hutool.core.util.RandomUtil;
 import loadbalance.BaseLoadBalance;
 import loadbalance.LoadBalance;
 import loadbalance.Node;
@@ -12,7 +11,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
- * 普通随机
+ * 加权轮训算法
  */
 public class WeightRoundRobinLoadBalance extends BaseLoadBalance<Node> implements LoadBalance<Node> {
 
